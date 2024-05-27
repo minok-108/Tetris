@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=3 uid="uid://djfihs6hykxtg"]
+
+[ext_resource type="Script" path="res://scripts/tetris.gd" id="1_tjw7y"]
+[ext_resource type="FontFile" uid="uid://dykx4mffqvb0r" path="res://fonts/Shentox-Regular (RUS by Slavchansky)_0.ttf" id="2_ivash"]
+
+[sub_resource type="Animation" id="Animation_e6453"]
+resource_name = "PLAY"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.3, 0.3),
+"update": 0,
+"values": [3.14159, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(0.3, 0.3, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j4dr5"]
+_data = {
+"PLAY": SubResource("Animation_e6453")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_d7qm0"]
+font = ExtResource("2_ivash")
+font_size = 32
+
+[sub_resource type="Gradient" id="Gradient_olx0b"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.120301, 0.285714, 0.421053, 0.578947, 0.721804, 0.87218, 1)
+colors = PackedColorArray(0.447059, 0.713726, 0.811765, 1, 0.27451, 0.286275, 0.411765, 1, 0.580392, 0.172549, 0.294118, 1, 0.878431, 0.419608, 0.317647, 1, 0.960784, 0.890196, 0.431373, 1, 0.396078, 0.552941, 0.470588, 1, 0.780392, 0.45098, 0.411765, 1, 0, 0, 0, 1)
+
+[node name="Tetris" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tjw7y")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j4dr5")
+}
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -27.5
+offset_right = 56.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(56, 27.5)
+text = "Tetris!"
+label_settings = SubResource("LabelSettings_d7qm0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Particle" type="CPUParticles2D" parent="."]
+position = Vector2(480, 270)
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+spread = 180.0
+initial_velocity_min = 300.0
+initial_velocity_max = 600.0
+angular_velocity_min = -20.0
+angular_velocity_max = 20.0
+scale_amount_min = 4.0
+scale_amount_max = 10.0
+color_initial_ramp = SubResource("Gradient_olx0b")
+hue_variation_min = 1.0
+hue_variation_max = 1.0

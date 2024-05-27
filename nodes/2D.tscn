@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5wdfucbhsy5j"]
+
+[ext_resource type="TileSet" uid="uid://bvsflaup4g8e1" path="res://other/TileSet.tres" id="1_touow"]
+
+[sub_resource type="Animation" id="Animation_pp147"]
+resource_name = "GAME"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fgc2q"]
+_data = {
+"GAME": SubResource("Animation_pp147")
+}
+
+[node name="D" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -352.0
+offset_right = 192.0
+offset_bottom = 352.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.767, 0.767)
+pivot_offset = Vector2(192, 352)
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_fgc2q")
+}
+
+[node name="Line" type="Line2D" parent="."]
+position = Vector2(32, 32)
+points = PackedVector2Array(0, 0, 320, 0, 320, 640, 0, 640, 0, -2)
+width = 4.0
+
+[node name="Backround" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -320.0
+offset_right = 160.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.878431, 0.87451, 0.886275, 1)
+
+[node name="LineDeath" type="Line2D" parent="."]
+points = PackedVector2Array(32, 96, 352, 96)
+width = 2.0
+default_color = Color(0.380392, 0.403922, 0.45098, 1)
+
+[node name="MainMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_touow")
+format = 2
+
+[node name="PhantomMap" type="TileMap" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+tile_set = ExtResource("1_touow")
+format = 2

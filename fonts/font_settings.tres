@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://r2h2pmcd4rmp"]
+
+[ext_resource type="FontFile" uid="uid://dykx4mffqvb0r" path="res://fonts/Shentox-Regular (RUS by Slavchansky)_0.ttf" id="1_t7mfd"]
+
+[resource]
+font = ExtResource("1_t7mfd")

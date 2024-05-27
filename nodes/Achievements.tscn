@@ -1,0 +1,828 @@
+[gd_scene load_steps=8 format=3 uid="uid://uobdv3pkeat4"]
+
+[ext_resource type="Script" path="res://scripts/achievements.gd" id="1_avlbs"]
+[ext_resource type="LabelSettings" uid="uid://r2h2pmcd4rmp" path="res://fonts/font_settings.tres" id="1_jxo2d"]
+[ext_resource type="Script" path="res://scripts/scroll_container.gd" id="3_x5mx6"]
+[ext_resource type="FontFile" uid="uid://dykx4mffqvb0r" path="res://fonts/Shentox-Regular (RUS by Slavchansky)_0.ttf" id="4_hcq48"]
+
+[sub_resource type="Animation" id="Animation_pns85"]
+resource_name = "PLAY"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vlwil"]
+resource_name = "RESET"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0j2on"]
+_data = {
+"PLAY": SubResource("Animation_pns85"),
+"RESET": SubResource("Animation_vlwil")
+}
+
+[node name="Achievements" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_avlbs")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0j2on")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1440.0
+offset_top = -810.0
+offset_right = 1440.0
+offset_bottom = 810.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.117647, 0.117647, 0.745098)
+
+[node name="LabelAchievements" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -480.0
+offset_top = 10.0
+offset_right = 480.0
+offset_bottom = 44.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "$Achievements"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.888889
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_x5mx6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="ScrollContainer"]
+custom_minimum_size = Vector2(960, 1052)
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/Control"]
+layout_mode = 0
+offset_left = 300.0
+offset_right = 660.0
+offset_bottom = 138.0
+
+[node name="Achievement" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Play_200_times_(Classic)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement2" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement2"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement2"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Play_3000_times_(Classic)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement2"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement3" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement3"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement3"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Play_100_times_(3D)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement3"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement4" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement4"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement4"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Play_2000_times_(3D)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement4"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement5" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement5"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement5"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Break_400_layers_(Classic)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement5"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement6" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement6"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement6"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Break_2000_layers_(Classic)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement6"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement7" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement7"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement7"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Break_1000000_layers_(Classic)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement7"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement8" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement8"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement8"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Break_1_layer_(3D)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement8"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement9" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement9"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement9"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Break_30_layers_(3D)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement9"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement10" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement10"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement10"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Break_200_layers_(3D)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement10"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement11" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement11"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement11"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Best_Score_4000_(Classic)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement11"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement12" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement12"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement12"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Best_Score_20000_(Classic)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement12"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement13" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement13"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement13"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Best_Score_30000_(Classic)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement13"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement14" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement14"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement14"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Best_Score_40000_(Classic)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement14"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement15" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement15"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement15"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Best_Score_50000_(Classic)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement15"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement16" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement16"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement16"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Best_Score_4000_(3D)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement16"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement17" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement17"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement17"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Best_Score_20000_(3D)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement17"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement18" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement18"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement18"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Best_Score_30000_(3D)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement18"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement19" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement19"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement19"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Best_Score_40000_(3D)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement19"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement20" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement20"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement20"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Best_Score_50000_(3D)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement20"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement21" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement21"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement21"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Complete_all_levels_(Classic)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement21"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement22" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement22"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement22"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Complete_all_levels_(3D)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement22"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement23" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement23"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement23"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Complete_all_levels"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement23"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement24" type="Control" parent="ScrollContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/Control/VBoxContainer/Achievement24"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement24"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "$Go_to_Discord_:)"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AchievementCompleted" type="Label" parent="ScrollContainer/Control/VBoxContainer/Achievement24"]
+visible = false
+layout_mode = 0
+offset_left = 346.0
+offset_right = 358.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("1_jxo2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonClose" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -50.0
+offset_right = 60.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_hcq48")
+theme_override_font_sizes/font_size = 16
+text = "$Close"
+
+[connection signal="pressed" from="ButtonClose" to="." method="_on_button_close_pressed"]

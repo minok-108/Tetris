@@ -1,0 +1,331 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfkqiex2rmxns"]
+
+[ext_resource type="Script" path="res://scripts/pause.gd" id="1_5c08p"]
+[ext_resource type="LabelSettings" uid="uid://r2h2pmcd4rmp" path="res://fonts/font_settings.tres" id="2_5va5a"]
+[ext_resource type="FontFile" uid="uid://dykx4mffqvb0r" path="res://fonts/Shentox-Regular (RUS by Slavchansky)_0.ttf" id="3_qyne0"]
+[ext_resource type="PackedScene" uid="uid://bqp4id5eusiud" path="res://nodes/Statistics.tscn" id="4_jrwtq"]
+[ext_resource type="PackedScene" uid="uid://dqy1aok8tqpnu" path="res://nodes/Settings.tscn" id="4_swyhi"]
+[ext_resource type="PackedScene" uid="uid://uobdv3pkeat4" path="res://nodes/Achievements.tscn" id="5_lspux"]
+
+[sub_resource type="Animation" id="Animation_wydhp"]
+resource_name = "PLAY"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Buttons/Continue:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Buttons/Again:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Buttons/Statistics:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Buttons/Achievements:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Buttons/Settings:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Buttons/Menu:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eqkig"]
+resource_name = "RESET"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Buttons/Continue:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Buttons/Again:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Buttons/Statistics:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Buttons/Achievements:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Buttons/Settings:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Buttons/Menu:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jue8y"]
+_data = {
+"PLAY": SubResource("Animation_wydhp"),
+"RESET": SubResource("Animation_eqkig")
+}
+
+[node name="Pause" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5c08p")
+metadata/_edit_use_anchors_ = true
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jue8y")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1440.0
+offset_top = -810.0
+offset_right = 1440.0
+offset_bottom = 810.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.243137, 0.243137, 0.243137, 0.745098)
+
+[node name="LabelPause" type="Label" parent="."]
+layout_mode = 2
+offset_top = 10.0
+offset_right = 960.0
+offset_bottom = 44.0
+text = "$Pause"
+label_settings = ExtResource("2_5va5a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.0
+offset_top = -64.0
+offset_right = 162.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Continue" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 40.0
+pivot_offset = Vector2(80, 20)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_qyne0")
+theme_override_font_sizes/font_size = 16
+text = "$Continue"
+
+[node name="Again" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_left = 164.0
+offset_right = 324.0
+offset_bottom = 40.0
+pivot_offset = Vector2(80, 20)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_qyne0")
+theme_override_font_sizes/font_size = 16
+text = "$Again"
+
+[node name="Statistics" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_top = 44.0
+offset_right = 160.0
+offset_bottom = 84.0
+pivot_offset = Vector2(80, 20)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_qyne0")
+theme_override_font_sizes/font_size = 16
+text = "$Statistics"
+
+[node name="Achievements" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 44.0
+offset_right = 324.0
+offset_bottom = 84.0
+pivot_offset = Vector2(80, 20)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_qyne0")
+theme_override_font_sizes/font_size = 16
+text = "$Achievements"
+
+[node name="Settings" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_top = 88.0
+offset_right = 160.0
+offset_bottom = 128.0
+pivot_offset = Vector2(80, 20)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_qyne0")
+theme_override_font_sizes/font_size = 16
+text = "$Settings"
+
+[node name="Menu" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_left = 164.0
+offset_top = 88.0
+offset_right = 324.0
+offset_bottom = 128.0
+pivot_offset = Vector2(80, 20)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_qyne0")
+theme_override_font_sizes/font_size = 16
+text = "$Menu"
+
+[node name="Statistics" parent="." instance=ExtResource("4_jrwtq")]
+visible = false
+layout_mode = 1
+
+[node name="Achievements" parent="." instance=ExtResource("5_lspux")]
+visible = false
+layout_mode = 1
+
+[node name="Settings" parent="." instance=ExtResource("4_swyhi")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Buttons/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Buttons/Again" to="." method="_on_again_pressed"]
+[connection signal="pressed" from="Buttons/Statistics" to="." method="_on_statistics_pressed"]
+[connection signal="pressed" from="Buttons/Achievements" to="." method="_on_achievements_pressed"]
+[connection signal="pressed" from="Buttons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Buttons/Menu" to="." method="_on_menu_pressed"]

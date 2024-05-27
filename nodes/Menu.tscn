@@ -1,0 +1,384 @@
+[gd_scene load_steps=18 format=3 uid="uid://bykwfyxx2i14d"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_wd3od"]
+[ext_resource type="Texture2D" uid="uid://cx611babff0og" path="res://textures/backgrounds/main_background.png" id="2_ce3bg"]
+[ext_resource type="FontFile" uid="uid://dykx4mffqvb0r" path="res://fonts/Shentox-Regular (RUS by Slavchansky)_0.ttf" id="3_i222w"]
+[ext_resource type="PackedScene" uid="uid://cu1phk3hnvbtj" path="res://nodes/Levels.tscn" id="4_ww6hn"]
+[ext_resource type="PackedScene" uid="uid://bqp4id5eusiud" path="res://nodes/Statistics.tscn" id="6_pi58i"]
+[ext_resource type="PackedScene" uid="uid://dqy1aok8tqpnu" path="res://nodes/Settings.tscn" id="6_y0omb"]
+[ext_resource type="PackedScene" uid="uid://uobdv3pkeat4" path="res://nodes/Achievements.tscn" id="7_rdh0v"]
+
+[sub_resource type="Animation" id="Animation_nh404"]
+resource_name = "PLAY"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Buttons/Play:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.35, 0.75),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Buttons/Levels:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.8),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Buttons/Statistics:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.45, 0.85),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Buttons/Achievements:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5, 0.9),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Buttons/Settings:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.55, 0.95),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Buttons/Quit:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.6, 1),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e4wlg"]
+_data = {
+"PLAY": SubResource("Animation_nh404")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lrw2n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ivhwh"]
+
+[sub_resource type="Animation" id="Animation_an1c2"]
+resource_name = "PLAY"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8bgpm"]
+resource_name = "RESET"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ra81i"]
+_data = {
+"PLAY": SubResource("Animation_an1c2"),
+"RESET": SubResource("Animation_8bgpm")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_demfm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w36j1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gey0y"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(480, 270)
+script = ExtResource("1_wd3od")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e4wlg")
+}
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 4.0
+anchor_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_ce3bg")
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 80.0
+offset_top = -270.0
+offset_right = 240.0
+offset_bottom = 270.0
+grow_vertical = 2
+
+[node name="Panel" type="ColorRect" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -810.0
+offset_right = 80.0
+offset_bottom = 810.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180392, 0.180392, 0.180392, 0.752941)
+
+[node name="Play" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_top = 150.0
+offset_right = 160.0
+offset_bottom = 190.0
+pivot_offset = Vector2(80, 20)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_i222w")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lrw2n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ivhwh")
+text = "$Play"
+
+[node name="Modes" type="Control" parent="Buttons/Play"]
+visible = false
+anchors_preset = 0
+offset_left = 160.0
+offset_right = 320.0
+offset_bottom = 80.0
+
+[node name="Animation" type="AnimationPlayer" parent="Buttons/Play/Modes"]
+libraries = {
+"": SubResource("AnimationLibrary_ra81i")
+}
+
+[node name="Panel" type="ColorRect" parent="Buttons/Play/Modes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -40.0
+offset_right = 80.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180392, 0.180392, 0.180392, 0.752941)
+
+[node name="Classic" type="Button" parent="Buttons/Play/Modes"]
+layout_mode = 2
+offset_right = 160.0
+offset_bottom = 40.0
+pivot_offset = Vector2(80, 20)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_i222w")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_demfm")
+text = "$Classic"
+
+[node name="3D" type="Button" parent="Buttons/Play/Modes"]
+layout_mode = 2
+offset_top = 40.0
+offset_right = 160.0
+offset_bottom = 80.0
+pivot_offset = Vector2(80, 20)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_i222w")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_w36j1")
+text = "$3D"
+
+[node name="Levels" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_top = 190.0
+offset_right = 160.0
+offset_bottom = 230.0
+pivot_offset = Vector2(80, 20)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_i222w")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lrw2n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ivhwh")
+text = "$Levels"
+
+[node name="Statistics" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_top = 230.0
+offset_right = 160.0
+offset_bottom = 270.0
+pivot_offset = Vector2(80, 20)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_i222w")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lrw2n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ivhwh")
+text = "$Statistics"
+
+[node name="Achievements" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_top = 270.0
+offset_right = 160.0
+offset_bottom = 310.0
+pivot_offset = Vector2(80, 20)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_i222w")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lrw2n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ivhwh")
+text = "$Achievements"
+
+[node name="Settings" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_top = 310.0
+offset_right = 160.0
+offset_bottom = 350.0
+pivot_offset = Vector2(80, 20)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_i222w")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lrw2n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ivhwh")
+text = "$Settings"
+
+[node name="Quit" type="Button" parent="Buttons"]
+layout_mode = 2
+offset_top = 350.0
+offset_right = 160.0
+offset_bottom = 390.0
+pivot_offset = Vector2(80, 20)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_i222w")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lrw2n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gey0y")
+text = "$Quit"
+
+[node name="Line" type="Line2D" parent="Buttons"]
+position = Vector2(-80, 0)
+points = PackedVector2Array(80, -540, 80, 1080)
+width = 2.0
+
+[node name="Line2" type="Line2D" parent="Buttons"]
+position = Vector2(-80, 0)
+points = PackedVector2Array(240, -540, 240, 1080)
+width = 2.0
+
+[node name="LinkDiscord" type="LinkButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = -27.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_i222w")
+theme_override_font_sizes/font_size = 16
+text = "Discord"
+underline = 1
+uri = "https://discord.gg/VUkMtmx2vP"
+
+[node name="Levels" parent="." instance=ExtResource("4_ww6hn")]
+visible = false
+layout_mode = 1
+
+[node name="Statistics" parent="." instance=ExtResource("6_pi58i")]
+visible = false
+layout_mode = 1
+
+[node name="Achievements" parent="." instance=ExtResource("7_rdh0v")]
+visible = false
+layout_mode = 1
+
+[node name="Settings" parent="." instance=ExtResource("6_y0omb")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Buttons/Play/Modes/Classic" to="." method="_on_classic_pressed"]
+[connection signal="pressed" from="Buttons/Play/Modes/3D" to="." method="_on_3d_pressed"]
+[connection signal="pressed" from="Buttons/Levels" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="Buttons/Statistics" to="." method="_on_statistics_pressed"]
+[connection signal="pressed" from="Buttons/Achievements" to="." method="_on_achievements_pressed"]
+[connection signal="pressed" from="Buttons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="LinkDiscord" to="." method="_on_link_discord_pressed"]

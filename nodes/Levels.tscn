@@ -1,0 +1,710 @@
+[gd_scene load_steps=8 format=3 uid="uid://cu1phk3hnvbtj"]
+
+[ext_resource type="Script" path="res://scripts/levels.gd" id="1_ju2b0"]
+[ext_resource type="LabelSettings" uid="uid://r2h2pmcd4rmp" path="res://fonts/font_settings.tres" id="2_pipl3"]
+[ext_resource type="Script" path="res://scripts/scroll_container.gd" id="3_irhqr"]
+[ext_resource type="FontFile" uid="uid://dykx4mffqvb0r" path="res://fonts/Shentox-Regular (RUS by Slavchansky)_0.ttf" id="4_ropsc"]
+
+[sub_resource type="Animation" id="Animation_pns85"]
+resource_name = "PLAY"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vlwil"]
+resource_name = "RESET"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0j2on"]
+_data = {
+"PLAY": SubResource("Animation_pns85"),
+"RESET": SubResource("Animation_vlwil")
+}
+
+[node name="Levels" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ju2b0")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0j2on")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1440.0
+offset_top = -810.0
+offset_right = 1440.0
+offset_bottom = 810.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.117647, 0.117647, 0.745098)
+
+[node name="LabelLevels" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -480.0
+offset_top = 10.0
+offset_right = 480.0
+offset_bottom = 44.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "$Levels"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.888889
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_irhqr")
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="ScrollContainer"]
+custom_minimum_size = Vector2(960, 600)
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Buttons" type="VBoxContainer" parent="ScrollContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.0
+offset_top = -300.0
+offset_right = 162.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Control" type="Control" parent="ScrollContainer/Control/Buttons"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/Control/Buttons/Control"]
+layout_mode = 2
+offset_top = -2.0
+offset_right = 324.0
+offset_bottom = 2.0
+
+[node name="LabelClassic" type="Label" parent="ScrollContainer/Control/Buttons/Control"]
+custom_minimum_size = Vector2(324, 0)
+layout_mode = 2
+offset_right = 324.0
+offset_bottom = 34.0
+text = "$Classic"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/Control/Buttons/Control"]
+layout_mode = 2
+offset_top = 31.0
+offset_right = 324.0
+offset_bottom = 35.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/Control/Buttons"]
+layout_mode = 2
+
+[node name="1Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "$level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer/1Level"]
+visible = false
+layout_mode = 2
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="2Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "$level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer/2Level"]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/Control/Buttons"]
+layout_mode = 2
+
+[node name="3Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer2"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "$level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer2/3Level"]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="4Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer2"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "$level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer2/4Level"]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ScrollContainer/Control/Buttons"]
+layout_mode = 2
+
+[node name="5Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer3"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "$level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer3/5Level"]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="6Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer3"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "$level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer3/6Level"]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="ScrollContainer/Control/Buttons"]
+layout_mode = 2
+
+[node name="7Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer4"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "$level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer4/7Level"]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="8Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer4"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "$level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer4/8Level"]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="ScrollContainer/Control/Buttons"]
+layout_mode = 2
+
+[node name="9Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer5"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "$level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer5/9Level"]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="10Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer5"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "$level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer5/10Level"]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="ScrollContainer/Control/Buttons"]
+layout_mode = 2
+
+[node name="11Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer6"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "$level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer6/11Level"]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="12Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer6"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "$level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer6/12Level"]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="ScrollContainer/Control/Buttons"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/Control/Buttons/Control2"]
+layout_mode = 2
+offset_top = -2.0
+offset_right = 324.0
+offset_bottom = 2.0
+
+[node name="Label3D" type="Label" parent="ScrollContainer/Control/Buttons/Control2"]
+custom_minimum_size = Vector2(324, 0)
+layout_mode = 2
+offset_right = 324.0
+offset_bottom = 34.0
+text = "$3D
+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/Control/Buttons/Control2"]
+layout_mode = 2
+offset_top = 31.0
+offset_right = 324.0
+offset_bottom = 35.0
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="ScrollContainer/Control/Buttons"]
+layout_mode = 2
+
+[node name="1Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer7"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "1 $level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer7/1Level"]
+visible = false
+layout_mode = 2
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="2Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer7"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "2 $level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer7/2Level"]
+visible = false
+layout_mode = 2
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="ScrollContainer/Control/Buttons"]
+layout_mode = 2
+
+[node name="3Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer8"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "3 $level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer8/3Level"]
+visible = false
+layout_mode = 2
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="4Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer8"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "4 $level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer8/4Level"]
+visible = false
+layout_mode = 2
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="ScrollContainer/Control/Buttons"]
+layout_mode = 2
+
+[node name="5Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer9"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "5 $level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer9/5Level"]
+visible = false
+layout_mode = 2
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="6Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer9"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "6 $level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer9/6Level"]
+visible = false
+layout_mode = 2
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="ScrollContainer/Control/Buttons"]
+layout_mode = 2
+
+[node name="7Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer10"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "7 $level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer10/7Level"]
+visible = false
+layout_mode = 2
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="8Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer10"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "8 $level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer10/8Level"]
+visible = false
+layout_mode = 2
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer11" type="HBoxContainer" parent="ScrollContainer/Control/Buttons"]
+layout_mode = 2
+
+[node name="9Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer11"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "9 $level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer11/9Level"]
+visible = false
+layout_mode = 2
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="10Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer11"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "10 $level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer11/10Level"]
+visible = false
+layout_mode = 2
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer12" type="HBoxContainer" parent="ScrollContainer/Control/Buttons"]
+layout_mode = 2
+
+[node name="11Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer12"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "11 $level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer12/11Level"]
+visible = false
+layout_mode = 2
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="12Level" type="Button" parent="ScrollContainer/Control/Buttons/HBoxContainer12"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "12 $level"
+
+[node name="LabelCompleted" type="Label" parent="ScrollContainer/Control/Buttons/HBoxContainer12/12Level"]
+visible = false
+layout_mode = 2
+offset_left = 150.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "+"
+label_settings = ExtResource("2_pipl3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonClose" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -50.0
+offset_right = 60.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_ropsc")
+theme_override_font_sizes/font_size = 16
+text = "$Close"
+
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer/1Level" to="." method="_on_2d_1_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer/2Level" to="." method="_on_2d_2_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer2/3Level" to="." method="_on_2d_3_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer2/4Level" to="." method="_on_2d_4_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer3/5Level" to="." method="_on_2d_5_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer3/6Level" to="." method="_on_2d_6_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer4/7Level" to="." method="_on_2d_7_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer4/8Level" to="." method="_on_2d_8_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer5/9Level" to="." method="_on_2d_9_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer5/10Level" to="." method="_on_2d_10_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer6/11Level" to="." method="_on_2d_11_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer6/12Level" to="." method="_on_2d_12_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer7/1Level" to="." method="_on_3d_1_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer7/2Level" to="." method="_on_3d_2_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer8/3Level" to="." method="_on_3d_3_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer8/4Level" to="." method="_on_3d_4_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer9/5Level" to="." method="_on_3d_5_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer9/6Level" to="." method="_on_3d_6_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer10/7Level" to="." method="_on_3d_7_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer10/8Level" to="." method="_on_3d_8_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer11/9Level" to="." method="_on_3d_9_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer11/10Level" to="." method="_on_3d_10_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer12/11Level" to="." method="_on_3d_11_level_pressed"]
+[connection signal="pressed" from="ScrollContainer/Control/Buttons/HBoxContainer12/12Level" to="." method="_on_3d_12_level_pressed"]
+[connection signal="pressed" from="ButtonClose" to="." method="_on_button_close_pressed"]
